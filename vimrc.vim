@@ -51,6 +51,11 @@ endif
 " enable the mouse in terminal
 set mouse=a
 
+" Have Vim jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " Change the error format
 set efm=%*[^\ ]\ %t%n\ %f\ %l:\ %m,%\\s%#%f(%l)\ :\ %t%*[^0-9]%n:\ %m,%*[^\"]\"%f\"%*[^0-9]%l:\ %m,%\\s%#%f(%l)\ :\ %m,%*[^\ ]\ %f\ %l:\ %m,%f:%l:%m,%t%*[^\ ]\ %f\ %l:\ %m,%t%*[^:]:\ \ %f(%l\\,%c):%m,%f:%l:%m,%t%*[^\ ]\ %f\ %l\ %c:\ %m 
 
@@ -152,4 +157,6 @@ autocmd bufnewfile *.go call setline(1,"")
 "Map <F1> to <ESC>, since I hit it a lot by mistake.
 map <F1> <ESC>
 imap <F1> <ESC>
+
+map <C-t> :NERDTreeToggle<CR>
 
