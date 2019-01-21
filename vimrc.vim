@@ -1,7 +1,7 @@
 " .vimrc
 
 scriptencoding utf-8
-source plugins.vim
+source ~/.vim/plugins.vim
 
 colorscheme gruvbox
 set listchars=tab:⇥•,trail:•,eol:↵
