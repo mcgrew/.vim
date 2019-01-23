@@ -20,7 +20,7 @@ set expandtab
 " set backspace=2
 
 set exrc
-" Set tab width to 8.
+" Set tab width to 2.
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
@@ -106,9 +106,10 @@ set display+=lastline
 " Switch on syntax highlighting.
 syntax on
 
+" F4 will create a function documentation block when on the declaration line
 function Python_settings( )
   map <F4> ^y0o<ESC>0DpA<TAB>"""<ESC>yypO:Parameters:<CR><CR>rtype:<SPACE><CR>return:<SPACE><ESC>3k0
-  map <C-_> :s/^/#/<CR>:s/^##//<CR>:let @/=""<CR>
+  map <C-_> :s/^/#/<CR>gv:s/^##//<CR>:let @/=""<CR>
 endfunction
 
 function Sh_settings( )
@@ -157,6 +158,4 @@ autocmd bufnewfile *.go call setline(1,"")
 "Map <F1> to <ESC>, since I hit it a lot by mistake.
 map <F1> <ESC>
 imap <F1> <ESC>
-
-map <C-t> :NERDTreeToggle<CR>
 
