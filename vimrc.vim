@@ -106,40 +106,10 @@ set display+=lastline
 " Switch on syntax highlighting.
 syntax on
 
+
 " F4 will create a function documentation block when on the declaration line
-function Python_settings( )
-  map <F4> ^y0o<ESC>0DpA<TAB>"""<ESC>yypO:Parameters:<CR><CR>rtype:<SPACE><CR>return:<SPACE><ESC>3k0
-  map <C-_> :s/^/#/<CR>gv:s/^##//<CR>:let @/=""<CR>
-endfunction
-
-function Sh_settings( )
-  map <F4> ^y0O<ESC>0DpA##<SPACE><ESC>yypPA<SPACE>
-  map <C-_> :s/^/#/<CR>gv:s/^##//<CR>:let @/=""<CR>
-endfunction
-
-function Sql_settings( )
-  map <F4> ^y0O<ESC>0DpA--<SPACE><ESC>yypPA<SPACE>
-  map <C-_> :s/^/--/<CR>gv:s/^----//<CR>:let @/=""<CR>
-endfunction
-
-function Default_settings( )
-  map <F4> ^y0O<ESC>0DpA/**<CR><SPACE>*/<ESC>O*<SPACE><ESC>yyppA@param<SPACE><ESC>pA@return<SPACE><ESC>3kA
-  map <C-_> :s/^/\/\//<CR>gv:s/^\/\/\/\///<CR>:let @/=""<CR>
-endfunction
-
-" Settings based on filetype
-autocmd bufenter,bufcreate * 
-\ if &ft == "python" 
-  \ |  call Python_settings( )
-\ | elseif &ft == "sql" 
-  \ | call Sql_settings( )
-\ | elseif &ft == "lua" 
-  \ | call Sql_settings( )
-\ | elseif &ft == "sh" 
-  \ | call Sh_settings( )
-\ | else
-  \ | call Default_settings( )
-\| endif
+map <F4> ^y0O<ESC>0DpA/**<CR><SPACE>*/<ESC>O*<SPACE><ESC>yyppA@param<SPACE><ESC>pA@return<SPACE><ESC>3kA
+map <C-_> :s/^/\/\//<CR>gv:s/^\/\/\/\///<CR>:let @/=""<CR>
 
 autocmd bufnewfile *.html call setline(1,"<!DOCTYPE html>") 
                       \ | call setline(2, "<html>" ) 
@@ -155,7 +125,13 @@ autocmd bufnewfile *.go call setline(1,"")
                     \ | call setline(2, "import (" ) 
                     \ | call setline(3, ")" ) 
 
-"Map <F1> to <ESC>, since I hit it a lot by mistake.
+" Map <F1> to <ESC>, since I hit it a lot by mistake.
 map <F1> <ESC>
 imap <F1> <ESC>
+
+" Some shortcuts for navigating between windows
+nmap <C-H> :wincmd h<CR>
+nmap <C-J> :wincmd j<CR>
+nmap <C-K> :wincmd k<CR>
+nmap <C-L> :wincmd l<CR>
 
