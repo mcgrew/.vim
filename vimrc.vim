@@ -95,8 +95,7 @@ imap <C-CR> <ESC>o
 nmap <F4> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 nmap <S-F4> :echo synIDattr(synID(line("."), col("."), 0), "name")<CR>
 " delete the swap file
-nmap \\. :echo strpart("Error  Deleted",7*(0==delete(expand("%:p:h")."/.".expand("%:t").".swp")),7)<cr>
-
+nmap \\. :echo strpart("Error  Deleted",7*(0==delete(expand("%:p:h")."/.".expand("%:t").".swp")),7)<cr> 
 " delete prev word
 imap <C-BS> <c-w>
 
@@ -134,4 +133,19 @@ nmap <C-H> :wincmd h<CR>
 nmap <C-J> :wincmd j<CR>
 nmap <C-K> :wincmd k<CR>
 nmap <C-L> :wincmd l<CR>
+
+function! ToggleMouse()
+    " check if mouse is enabled
+    if &mouse == 'a'
+        " disable mouse
+        set mouse=
+        echo "Mouse disabled"
+    else
+        " enable mouse everywhere
+        set mouse=a
+        echo "Mouse enabled"
+    endif
+endfunc
+
+nmap <C-M> :call ToggleMouse()<CR>
 
