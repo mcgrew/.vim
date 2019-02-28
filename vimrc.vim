@@ -1,6 +1,7 @@
 " .vimrc
 
 scriptencoding utf-8
+source ~/.vim/functions.vim
 source ~/.vim/plugins.vim
 
 colorscheme gruvbox
@@ -110,42 +111,22 @@ syntax on
 map <F4> ^y0O<ESC>0DpA/**<CR><SPACE>*/<ESC>O*<SPACE><ESC>yyppA@param<SPACE><ESC>pA@return<SPACE><ESC>3kA
 map <C-_> :s/^/\/\//<CR>gv:s/^\/\/\/\///<CR>:let @/=""<CR>
 
-autocmd bufnewfile *.html call setline(1,"<!DOCTYPE html>") 
-                      \ | call setline(2, "<html>" ) 
-                      \ | call setline(3, "  <head>") | call setline(4, "  </head>")
-                      \ | call setline(5, "  <body>") | call setline(6, "  </body>")
-                      \ | call setline(7, "</html>")
-autocmd bufnewfile *.php call setline(1,"<?php") | call setline(2,"?>")
-autocmd bufnewfile *.sh call setline(1,"#!/bin/bash")
-autocmd bufnewfile *.svg call setline(1,'<?xml version="1.0" encoding="ISO-8859-1"?>')
-                      \ | call setline(2, '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">')
-                      \ | call setline(3, '</svg>')
-autocmd bufnewfile *.go call setline(1,"")
-                    \ | call setline(2, "import (" ) 
-                    \ | call setline(3, ")" ) 
+autocmd bufnewfile *.html call NewHTMLFile()
+autocmd bufnewfile *.php call NewPHPFile()
+autocmd bufnewfile *.sh call NewShFile()
+autocmd bufnewfile *.svg call NewSVGFile()
+autocmd bufnewfile *.go call NewGoFile()
+autocmd bufnewfile *.java call NewJavaFile()
 
 " Map <F1> to <ESC>, since I hit it a lot by mistake.
 map <F1> <ESC>
 imap <F1> <ESC>
 
 " Some shortcuts for navigating between windows
-nmap <C-H> :wincmd h<CR>:echo @%<CR>
-nmap <C-J> :wincmd j<CR>:echo @%<CR>
-nmap <C-K> :wincmd k<CR>:echo @%<CR>
-nmap <C-L> :wincmd l<CR>:echo @%<CR>
-
-function! ToggleMouse()
-    " check if mouse is enabled
-    if &mouse == 'a'
-        " disable mouse
-        set mouse=
-        echo "Mouse disabled"
-    else
-        " enable mouse everywhere
-        set mouse=a
-        echo "Mouse enabled"
-    endif
-endfunc
+nmap <C-H> :wincmd h<CR>:echo "Editing" @%<CR>
+nmap <C-J> :wincmd j<CR>:echo "Editing" @%<CR>
+nmap <C-K> :wincmd k<CR>:echo "Editing" @%<CR>
+nmap <C-L> :wincmd l<CR>:echo "Editing" @%<CR>
 
 nmap <C-M> :call ToggleMouse()<CR>
 
