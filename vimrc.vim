@@ -129,10 +129,10 @@ map <F1> <ESC>
 imap <F1> <ESC>
 
 " Some shortcuts for navigating between windows
-nmap <C-H> :wincmd h<CR>
-nmap <C-J> :wincmd j<CR>
-nmap <C-K> :wincmd k<CR>
-nmap <C-L> :wincmd l<CR>
+nmap <C-H> :wincmd h<CR>:echo @%<CR>
+nmap <C-J> :wincmd j<CR>:echo @%<CR>
+nmap <C-K> :wincmd k<CR>:echo @%<CR>
+nmap <C-L> :wincmd l<CR>:echo @%<CR>
 
 function! ToggleMouse()
     " check if mouse is enabled
