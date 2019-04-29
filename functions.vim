@@ -30,8 +30,8 @@ endfunction
 function! Diff(revision)
   let filepath = @%
   let diff_filetype = &ft
-  set nofoldenable
   diffthis
+  set nofoldenable
   vnew
   set modifiable
   let filepath = system('git ls-files --full-name ' . filepath)
@@ -40,8 +40,8 @@ function! Diff(revision)
   let &ft = diff_filetype
   set nomodifiable
   set buftype=nofile
-  set nofoldenable
   diffthis
+  set nofoldenable
   wincmd l
   echo ""
 endfunc
