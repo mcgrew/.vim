@@ -2,6 +2,7 @@
 
 scriptencoding utf-8
 source ~/.vim/functions.vim
+source ~/.vim/git.vim
 source ~/.vim/plugins.vim
 
 colorscheme gruvbox
