@@ -2,7 +2,6 @@
 
 scriptencoding utf-8
 source ~/.vim/functions.vim
-source ~/.vim/git.vim
 source ~/.vim/plugins.vim
 
 colorscheme gruvbox
@@ -110,7 +109,6 @@ syntax on
 
 " F4 will create a function documentation block when on the declaration line
 map <F4> ^y0O<ESC>0DpA/**<CR><SPACE>*/<ESC>O*<SPACE><ESC>yyppA@param<SPACE><ESC>pA@return<SPACE><ESC>3kA
-map <C-_> :s/^/\/\//<CR>gv:s/^\/\/\/\///<CR>:let @/=""<CR>
 
 autocmd bufnewfile *.html call NewHTMLFile()
 autocmd bufnewfile *.php call NewPHPFile()
@@ -130,4 +128,7 @@ nmap <C-K> :wincmd k<CR>:echo "Editing" @%<CR>
 nmap <C-L> :wincmd l<CR>:echo "Editing" @%<CR>
 
 nmap <C-M> :call ToggleMouse()<CR>
+map <C-_> :call ToggleComment()<CR>
+map <C-D> :call Diff("HEAD")<CR>
+map <C-P> :call Diff("HEAD^")<CR>
 

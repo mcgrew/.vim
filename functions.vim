@@ -1,3 +1,4 @@
+" Toggle mouse support on/off. Useful for cut/paste.
 function! ToggleMouse()
     " check if mouse is enabled
     if &mouse == 'a'
@@ -9,6 +10,40 @@ function! ToggleMouse()
         set mouse=a
         echo "Mouse enabled"
     endif
+endfunc
+
+" Comment/uncomment the current line(s)
+function! ToggleComment()
+  let c = split(&commentstring, "%s")
+  if getline('.') =~ "^" . c[0][0] " if this line is commented out, uncomment
+    if len(c) == 2 " if it's a full line comment
+      call setline(line('.'), getline('.')[len(c[0]):])
+    else " if the comment type is a surround
+      call setline(line('.'), getline('.')[len(c[0]):-len(c[1])-1])
+    endif
+  else " if the line is not commented out, comment it
+    call setline(line('.'), printf(&commentstring, getline('.')))
+  endif
+endfunction
+
+" Show the differences from the specified git revision in a scratch window
+function! Diff(revision)
+  let filepath = @%
+  let diff_filetype = &ft
+  set nofoldenable
+  diffthis
+  vnew
+  set modifiable
+  let filepath = system('git ls-files --full-name ' . filepath)
+  put=system('git show ' . a:revision . ':' . filepath)
+  execute "0d_"
+  let &ft = diff_filetype
+  set nomodifiable
+  set buftype=nofile
+  set nofoldenable
+  diffthis
+  wincmd l
+  echo ""
 endfunc
 
 function! NewHTMLFile()
