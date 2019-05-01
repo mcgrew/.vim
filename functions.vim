@@ -16,7 +16,7 @@ endfunc
 function! ToggleComment()
   let c = split(&commentstring, "%s")
   if getline('.') =~ "^" . c[0][0] " if this line is commented out, uncomment
-    if len(c) == 2 " if it's a full line comment
+    if len(c) == 1 " if it's a full line comment
       call setline(line('.'), getline('.')[len(c[0]):])
     else " if the comment type is a surround
       call setline(line('.'), getline('.')[len(c[0]):-len(c[1])-1])
