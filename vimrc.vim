@@ -16,15 +16,17 @@ set smartindent
 set smarttab
 " Convert tabs to spaces
 set expandtab
+" Highlight search terms
+set hlsearch
 
 " Allow backspace to back over lines
 " set backspace=2
 
 set exrc
 " Set tab width to 2.
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 " I like it writing automatically on swapping
 set autowrite
 set noshowcmd
@@ -131,4 +133,5 @@ nmap <C-M> :call ToggleMouse()<CR>
 map <C-_> :call ToggleComment()<CR>
 map <C-D> :call Diff("HEAD")<CR>
 map <C-P> :call Diff("HEAD^")<CR>
+
 
