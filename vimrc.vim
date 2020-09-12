@@ -108,16 +108,8 @@ set display+=lastline
 " Switch on syntax highlighting.
 syntax on
 
-
 " F4 will create a function documentation block when on the declaration line
 map <F4> ^y0O<ESC>0DpA/**<CR><SPACE>*/<ESC>O*<SPACE><ESC>yyppA@param<SPACE><ESC>pA@return<SPACE><ESC>3kA
-
-autocmd bufnewfile *.html call NewHTMLFile()
-autocmd bufnewfile *.php call NewPHPFile()
-autocmd bufnewfile *.sh call NewShFile()
-autocmd bufnewfile *.svg call NewSVGFile()
-autocmd bufnewfile *.go call NewGoFile()
-autocmd bufnewfile *.java call NewJavaFile()
 
 " Map <F1> to <ESC>, since I hit it a lot by mistake.
 map <F1> <ESC>

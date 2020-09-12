@@ -49,6 +49,7 @@ function! Diff(revision)
   echo ""
 endfunc
 
+autocmd bufnewfile *.html call NewHTMLFile()
 function! NewHTMLFile()
   call setline(1,"<!DOCTYPE html>") 
   call setline(2, "<html>" ) 
@@ -59,27 +60,32 @@ function! NewHTMLFile()
   call setline(7, "</html>")
 endfunc
 
+autocmd bufnewfile *.php call NewPHPFile()
 function! NewPHPFile()
   call setline(1,"<?php")
   call setline(2,"?>")
 endfunc
 
+autocmd bufnewfile *.sh call NewShFile()
 function! NewShFile()
   call setline(1,"#!/bin/bash")
 endfunc
 
+autocmd bufnewfile *.svg call NewSVGFile()
 function! NewSVGFile()
   call setline(1, '<?xml version="1.0" encoding="ISO-8859-1"?>')
   call setline(2, '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">')
   call setline(3, '</svg>')
 endfunc
 
+autocmd bufnewfile *.go call NewGoFile()
 function! NewGoFile()
   call setline(1,"")
   call setline(2, "import (" ) 
   call setline(3, ")" ) 
 endfunc
 
+autocmd bufnewfile *.java call NewJavaFile()
 function! NewJavaFile()
   call setline(1, "" ) 
   call setline(2, join(["public class", expand('%:r:t'), "{"]))
