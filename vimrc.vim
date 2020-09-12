@@ -79,7 +79,7 @@ set viminfo='20,\"50
 "set textwidth=120        " always limit the width of text to 120
 "set backup              " keep a backup file
 " I like having history
-set history=100
+set history=200
 
 " Map Y do be an analog of D
 map Y y$
