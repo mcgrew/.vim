@@ -14,15 +14,18 @@ endfunc
 
 " Comment/uncomment the current line(s)
 function! ToggleComment()
+  if &commentstring == "/*%s*/"
+      let &commentstring = "//%s" " don't use surround style comments for C/C++
+  endif
   let c = split(&commentstring, "%s")
   if getline('.') =~ "^" . c[0][0] " if this line is commented out, uncomment
     if len(c) == 1 " if it's a full line comment
-      call setline(line('.'), getline('.')[len(c[0]):])
+      call setline(line('.'), getline('.')[len(c[0])+1:])
     else " if the comment type is a surround
-      call setline(line('.'), getline('.')[len(c[0]):-len(c[1])-1])
+      call setline(line('.'), getline('.')[len(c[0])+1:-len(c[1])-1])
     endif
   else " if the line is not commented out, comment it
-    call setline(line('.'), printf(&commentstring, getline('.')))
+    call setline(line('.'), printf(&commentstring," ". getline('.')))
   endif
 endfunction
 
