@@ -14,6 +14,10 @@ endfunc
 
 " Comment/uncomment the current line(s)
 function! ToggleComment()
+  if len(&commentstring) == 0
+      echo "This file type does not support comments"
+      return
+  endif
   if &commentstring == "/*%s*/"
       let &commentstring = "//%s" " don't use surround style comments for C/C++
   endif
