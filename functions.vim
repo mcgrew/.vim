@@ -94,8 +94,8 @@ function! NewJavaFile()
   call setline(1, "" ) 
   call setline(2, join(["public class", expand('%:r:t'), "{"]))
   call setline(3, "" ) 
-  call setline(4, join(["  public ", expand('%:r:t'), "() {"], ""))
-  call setline(5, "  }" ) 
+  call setline(4, join(["    public ", expand('%:r:t'), "() {"], ""))
+  call setline(5, "    }" ) 
   call setline(6, "}" ) 
 endfunc
 

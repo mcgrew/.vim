@@ -47,7 +47,7 @@ set nowrap
 
 if version >= 703
   " Highlight the 80 char mark
-  set colorcolumn=81,121
+  set colorcolumn=80,100,120
   highlight ColorColumn ctermbg=8
 endif
 
@@ -126,4 +126,5 @@ map <C-_> :call ToggleComment()<CR>
 map <C-D> :call Diff("HEAD")<CR>
 map <C-P> :call Diff("HEAD^")<CR>
 
-
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['~/.vim/*', '!~/*']
